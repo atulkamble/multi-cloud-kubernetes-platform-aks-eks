@@ -84,7 +84,8 @@ multi-cloud-kubernetes-platform/
 ### 1️⃣ Clone Repository
 
 ```bash
-git clone https://github.com/your-username/multi-cloud-kubernetes-platform-aks-eks.git
+git clone
+https://github.com/atulkamble/multi-cloud-kubernetes-platform-aks-eks.git
 cd multi-cloud-kubernetes-platform-aks-eks
 ```
 
