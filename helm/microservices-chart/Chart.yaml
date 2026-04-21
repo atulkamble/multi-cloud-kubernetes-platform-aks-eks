@@ -1,0 +1,6 @@
+apiVersion: v2
+name: microservices-chart
+description: Helm chart for deploying sample microservices on AKS and EKS
+type: application
+version: 0.1.0
+appVersion: "0.1.0"

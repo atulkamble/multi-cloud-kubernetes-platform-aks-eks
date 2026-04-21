@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-microservice
+  namespace: platform
+  labels:
+    app: sample-microservice
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: sample-microservice
+  template:
+    metadata:
+      labels:
+        app: sample-microservice
+    spec:
+      containers:
+        - name: app
+          image: ghcr.io/your-org/sample-microservice:0.1.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          env:
+            - name: APP_VERSION
+              value: "0.1.0"
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 20

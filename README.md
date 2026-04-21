@@ -134,6 +134,16 @@ cd helm/microservices-chart
 helm install microservices .
 ```
 
+Optional (Kustomize overlays):
+
+```bash
+# AKS overlay
+kubectl apply -k kubernetes/overlays/aks
+
+# EKS overlay
+kubectl apply -k kubernetes/overlays/eks
+```
+
 ---
 
 ### 5️⃣ Setup Ingress Controller
@@ -147,7 +157,9 @@ kubectl apply -f kubernetes/ingress/
 ### 6️⃣ Deploy Monitoring Stack
 
 ```bash
-kubectl apply -f monitoring/
+kubectl apply -f monitoring/namespace.yaml
+kubectl apply -f monitoring/prometheus/
+kubectl apply -f monitoring/grafana/
 ```
 
 ---
